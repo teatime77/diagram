@@ -45,7 +45,6 @@ export interface Attr {
     paddingLeft? : string;
     verticalAlign? : string;
     horizontalAlign? : string;
-    colspan? : number;
     width? : string;
     height? : string;
     disabled? : boolean;
@@ -73,8 +72,6 @@ export abstract class UI {
     boxSize  : Vec2 = Vec2.zero();
     width? : string;
     height? : string;
-    colspan : number = 1;
-    rowspan : number = 1;
     margin : number[] = [ 4, 4, 4, 4 ];     // left, right, top, bottom
     borderWidth : number = 3;
     padding : number[] = [ 0, 0, 0, 0 ];    // left, right, top, bottom
@@ -84,9 +81,6 @@ export abstract class UI {
 
     constructor(data : Attr){
         this.idx = ++UI.count;
-        if(data.colspan != undefined){
-            this.colspan = data.colspan;
-        }
         this.backgroundColor = data.backgroundColor;
     }
 
