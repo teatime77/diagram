@@ -42,7 +42,6 @@ export interface Attr {
     borderStyle? : string;
     borderWidth? : number;
     padding? : number[];
-    paddingLeft? : string;
     verticalAlign? : string;
     horizontalAlign? : string;
     width? : string;
