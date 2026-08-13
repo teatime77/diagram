@@ -9,6 +9,7 @@ import { saveJson, theEditor } from "./json-util";
 import { IfBlock, InfiniteLoop, TTSBlock, SleepBlock, TriggerGate, ActionBlock, makeBlockByTypeName, PlayMovieBlock, PlayGameBlock, PlayWebGPUBlock } from "./procedure";
 import { Block } from "./block"
 import { Port } from "./port";
+import { initAlgebra } from "@algebra";
 
 export let stopFlag : boolean = false;
 let isRunning : boolean = false;
@@ -33,10 +34,23 @@ export class DataType {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-    msg("loaded in diagram-ts");
+    if ((window as any).diagramEntryInitialized) {
+        console.log("duplicate load of diagram/ts/index.ts");
+        return;
+    }
+    (window as any).diagramEntryInitialized = true;
+
+    // msg("loaded in diagram-ts");
+    console.log("loaded in diagram-ts", {
+        url: import.meta.url,
+        timeOrigin: performance.timeOrigin,
+    });
     initURL();
 
-    if(pathName.startsWith("/webgpu")){
+    if(pathName.startsWith("/algebra")){
+        await initAlgebra();
+    }
+    else if(pathName.startsWith("/webgpu")){
         await initWebGPU();
     }
     else if(pathName.startsWith("/game")){

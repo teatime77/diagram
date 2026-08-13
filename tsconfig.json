@@ -32,6 +32,7 @@
     "paths": {                                           /* Specify a set of entries that re-map imports to additional lookup locations. */
       "@i18n": ["../i18n/ts/index"],
       "@parser": ["../parser/ts/index"],
+      "@algebra": ["../algebra/ts/index"],
       "@plane": ["../plane/ts/index"],
       "@game":   ["../game/ts/index"],
       "@movie":   ["../movie/ts/index"],
@@ -119,6 +120,7 @@
   "references": [
     { "path": "../i18n" },
     { "path": "../parser" },
+    { "path": "../algebra"},
     { "path": "../plane" },
     { "path": "../game" },
     { "path": "../movie" },
